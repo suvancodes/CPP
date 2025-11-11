@@ -1,0 +1,29 @@
+{
+    "files.associations": {
+        "__locale": "c",
+        "iostream": "cpp",
+        "__bit_reference": "cpp",
+        "__string": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "__hash_table": "cpp",
+        "unordered_map": "cpp",
+        "iosfwd": "cpp",
+        "vector": "cpp",
+        "queue": "cpp",
+        "stdio.h": "c",
+        "ostream": "cpp",
+        "__mutex_base": "cpp",
+        "__split_buffer": "cpp",
+        "tuple": "cpp",
+        "variant": "cpp",
+        "stdbool.h": "c",
+        "set": "cpp",
+        "new": "cpp",
+        "stack": "cpp",
+        "deque": "cpp",
+        "array": "cpp",
+        "list": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
