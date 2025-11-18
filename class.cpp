@@ -28,7 +28,7 @@ using namespace std;
 //         for(int j =0;j<3;j++){
 //             sum[i][j] = mat1[i][j]+mat2[i][j];
 //         }
-        
+
 //     }
 
 //     for(int i =0;i<n;i++){
@@ -40,10 +40,9 @@ using namespace std;
 
 // }
 
-
 // #include <iostream>
 // #include <iomanip>
- 
+
 // #include <string>
 // using namespace std;
 
@@ -88,7 +87,6 @@ using namespace std;
 //     }
 //     free(students);
 
-
 //     return 0;
 // }
 
@@ -96,7 +94,7 @@ using namespace std;
 // using namespace std;
 
 // int main(){
-//     int n;  
+//     int n;
 //     cout << "Enter the number of elements in the array: ";
 //     cin >> n;
 //     int mid = n/2;
@@ -107,7 +105,7 @@ using namespace std;
 //     for (int i = 0; i < n; i++) {
 //         cin >> arr[i];
 //     }
-    
+
 //     for (int i = 0; i < mid; i++)
 //     {
 //         arr[i]+=2;
@@ -129,50 +127,116 @@ using namespace std;
 //         cout << arr[i] << "  ";
 //     }
 //     free(arr);
-    
-    
+
 //     return 0;
 // }
 
-#include <iostream>
-using namespace std;
+// #include <iostream>
+// using namespace std;
 
-struct node{
-    int data ;
-    node* next;
+// struct node{
+//     int data ;
+//     node* next;
 
+// };
+
+// int main (){
+//     node* head=(node*)malloc(sizeof(node));
+//     node* second=(node*)malloc(sizeof(node));
+//     node* third=(node*)malloc(sizeof(node));
+//     head->data=1;
+//     head->next=second;
+//     second-> data =2;
+//     second->next= third;
+//     third->data=3;
+//     third->next=nullptr;
+//     node* temp=head;
+//     node* temp1 = head;
+
+//     while(temp1->next->next!=NULL){
+//       temp1=temp1->next;
+//     }
+//     temp1->next=NULL;
+
+//     while(temp!=nullptr){
+//         cout<<temp->data<<"->";
+//         temp=temp->next;
+//     }
+
+//     cout<<"null\n";
+//     free(head);
+//     free(second);
+//     free(third);
+//     return 0;
+
+// }
+
+// implement a linked literals
+
+// #include <iostream>
+// using namespace std;
+
+struct Node {
+    int data;
+    Node* firstChild;
+    Node* nextSibling;
+
+    Node(int val) {
+        data = val;
+        firstChild = nullptr;
+        nextSibling = nullptr;
+    }
 };
 
-int main (){
-    node* head=(node*)malloc(sizeof(node));
-    node* second=(node*)malloc(sizeof(node));
-    node* third=(node*)malloc(sizeof(node));
-    head->data=1;
-    head->next=second;
-    second-> data =2;
-    second->next= third;
-    third->data=3;
-    third->next=nullptr;
-    node* temp=head;
-    node* temp1 = head;
-    
-    while(temp1->next->next!=NULL){
-      temp1=temp1->next;
-    }
-    temp1->next=NULL;
+void addChild(Node* parent, int childData) {
+    Node* child = new Node(childData);
 
-
-    while(temp!=nullptr){
-        cout<<temp->data<<"->";
-        temp=temp->next;
+    if (parent->firstChild == nullptr) {
+        parent->firstChild = child;
     }
-    
-    cout<<"null\n";
-    free(head);
-    free(second);
-    free(third);
+    else {
+        Node* temp = parent->firstChild;
+        while (temp->nextSibling != nullptr) {
+            temp = temp->nextSibling;
+        }
+        temp->nextSibling = child;
+    }
+}
+
+void preorder(Node* root) {
+    if (root == nullptr) return;
+
+    cout << root->data << " ";
+    preorder(root->firstChild);
+    preorder(root->nextSibling);
+}
+
+int main() {
+    Node* root = new Node(1);
+
+    addChild(root, 2);
+    addChild(root, 3);
+    addChild(root, 4);
+    addChild(root->firstChild, 5);
+    addChild(root->firstChild, 6);
+    preorder(root);
     return 0;
-    
 }
 
 
+
+// #include <iostream>
+// struct Node{
+//     int data;
+//     Node *left;
+//     Node *right;
+//     Node(int val){
+//         data = val;
+//         left = right = NULL;
+//     }
+// };
+// int main(){
+//     Node *root = new Node(1);
+//     root->left = new Node(2);
+//     root->right = new Node(3);
+// }
