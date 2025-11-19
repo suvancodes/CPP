@@ -173,8 +173,135 @@ using namespace std;
 
 // implement a linked literals
 
-// #include <iostream>
+
+
+
+                // code for max heap min heap
 // using namespace std;
+
+// class MinHeap {
+// public:
+//     int arr[100];
+//     int size;
+
+//     MinHeap() {
+//         size = 0;
+//     }
+
+//     void insertKey(int x) {
+//         arr[size] = x;
+//         int i = size;
+//         size++;
+//         while(i > 0 && arr[(i-1)/2] > arr[i]) {
+//             swap(arr[i], arr[(i-1)/2]);
+//             i = (i-1)/2;
+//         }
+//     }
+
+//     void heapify(int i) {
+//         int l = 2*i + 1;
+//         int r = 2*i + 2;
+//         int s = i;
+//         if(l < size && arr[l] < arr[s]) s = l;
+//         if(r < size && arr[r] < arr[s]) s = r;
+//         if(s != i) {
+//             swap(arr[i], arr[s]);
+//             heapify(s);
+//         }
+//     }
+
+//     int extractMin() {
+//         if(size == 0) return -1;
+//         int root = arr[0];
+//         arr[0] = arr[size-1];
+//         size--;
+//         heapify(0);
+//         return root;
+//     }
+
+//     void print() {
+//         for(int i = 0; i < size; i++) cout << arr[i] << " ";
+//         cout << endl;
+//     }
+// };
+
+// int main() {
+//     MinHeap h;
+//     h.insertKey(10);
+//     h.insertKey(5);
+//     h.insertKey(2);
+//     h.insertKey(20);
+//     h.insertKey(1);
+
+//     h.print();
+//     cout << h.extractMin() << endl;
+//     h.print();
+// }
+
+
+// using namespace std;
+
+// class MaxHeap {
+// public:
+//     int arr[100];
+//     int size;
+//     MaxHeap() {
+//         size = 0;
+//     }
+//     void insertKey(int x) {
+//         arr[size] = x;
+//         int i = size;
+//         size++;
+//         while(i > 0 && arr[(i-1)/2] < arr[i]) {
+//             swap(arr[i], arr[(i-1)/2]);
+//             i = (i-1)/2;
+//         }
+//     }
+
+//     void heapify(int i) {
+//         int l = 2*i + 1;
+//         int r = 2*i + 2;
+//         int largest = i;
+//         if(l < size && arr[l] > arr[largest]) largest = l;
+//         if(r < size && arr[r] > arr[largest]) largest = r;
+//         if(largest != i) {
+//             swap(arr[i], arr[largest]);
+//             heapify(largest);
+//         }
+//     }
+
+//     int extractMax() {
+//         if(size == 0) return -1;
+//         int root = arr[0];
+//         arr[0] = arr[size-1];
+//         size--;
+//         heapify(0);
+//         return root;
+//     }
+
+//     void print() {
+//         for(int i = 0; i < size; i++) cout << arr[i] << " ";
+//         cout << endl;
+//     }
+// };
+
+// int main() {
+//     MaxHeap h;
+//     h.insertKey(40);
+//     h.insertKey(20);
+//     h.insertKey(60);
+//     h.insertKey(5);
+//     h.insertKey(55);
+
+//     h.print();
+//     cout << h.extractMax() << endl;
+//     h.print();
+// }
+
+
+
+#include <iostream>
+using namespace std;
 
 struct Node {
     int data;
@@ -203,12 +330,12 @@ void addChild(Node* parent, int childData) {
     }
 }
 
-void preorder(Node* root) {
+void inorder(Node* root) {
     if (root == nullptr) return;
 
+    inorder(root->firstChild);
     cout << root->data << " ";
-    preorder(root->firstChild);
-    preorder(root->nextSibling);
+    inorder(root->nextSibling);
 }
 
 int main() {
@@ -217,26 +344,10 @@ int main() {
     addChild(root, 2);
     addChild(root, 3);
     addChild(root, 4);
-    addChild(root->firstChild, 5);
+
+    addChild(root->firstChild, 5); // children of 2
     addChild(root->firstChild, 6);
-    preorder(root);
+
+    inorder(root);
     return 0;
 }
-
-
-
-// #include <iostream>
-// struct Node{
-//     int data;
-//     Node *left;
-//     Node *right;
-//     Node(int val){
-//         data = val;
-//         left = right = NULL;
-//     }
-// };
-// int main(){
-//     Node *root = new Node(1);
-//     root->left = new Node(2);
-//     root->right = new Node(3);
-// }
